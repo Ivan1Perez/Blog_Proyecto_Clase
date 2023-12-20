@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -13,21 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $blogs = [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-        ];
-        return view('posts.index',compact('blogs'));
-        
-        
+        $posts = Post::get();
+        return view('posts.index',compact('posts'));
     }
 
     /**

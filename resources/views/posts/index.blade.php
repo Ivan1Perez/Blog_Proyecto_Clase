@@ -3,8 +3,9 @@
 
 @section('contenido')
     <h1>Listado de posts</h1>
-    @forelse ($blogs as $blog)
-        <p>Ver la ficha<a href="{{route('posts.show',$blog)}}"> numero {{$blog}}</a></p>
+    @forelse ($posts as $post)
+        <p>{{$post->titulo}}</p>
+        <a href="{{route('posts.show', $post->titulo)}}">Ver post</a>
     @empty
         <p>No hay blogs disponibles</p>
     @endforelse
