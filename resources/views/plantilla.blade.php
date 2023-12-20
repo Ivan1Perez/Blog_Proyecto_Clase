@@ -9,8 +9,8 @@
 </head>
 <body>
     @include('partials.nav')
-   <div class="col-12 d-flex justify-content-end">
-     <button class="col-2 btn btn-primary me-2">{{fechaActual('d D F \of o')}}</button>
+   <div class="float-right mx-4 bg-[#0d6efd] text-white p-2 rounded">
+     <button>{{fechaActual('d D F \of o')}}</button>
    </div>
     @yield('contenido')
 </body>
