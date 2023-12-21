@@ -100,7 +100,24 @@ class PostController extends Controller
         $randomNumber = mt_rand(1, 100);
         $post->titulo = "Título $randomNumber";
         $post->contenido = "Contenido $randomNumber";
-        $post->created_at = fechaActual("Y-m-d H:i:s");
         $post->save();
+
+        return redirect()->route('posts.index');
+    }
+
+    /**
+     * Simulación del método de editar
+     *
+     *
+     */
+    public function editarPrueba($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->titulo = "Título modificado";
+
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 }
