@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('titulo')->get();
+        $posts = Post::orderBy('titulo')
+            ->paginate(5);
         return view('posts.index',compact('posts'));
     }
 
@@ -47,7 +48,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view('posts.show',compact('id'));
+        $post = Post::findOrFail($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -81,6 +83,24 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+        $posts = Post::orderBy('titulo')
+        ->paginate(5);
+        return view('posts.index', compact('posts'));
+    }
+
+    /**
+     * Simulación del método de inserción
+     *
+     *
+     */
+    public function nuevoPrueba()
+    {
+        $post = new Post();
+        $randomNumber = mt_rand(1, 100);
+        $post->titulo = "Título $randomNumber";
+        $post->contenido = "Contenido $randomNumber";
+        $post->created_at = fechaActual("Y-m-d H:i:s");
+        $post->save();
     }
 }

@@ -13,7 +13,12 @@ use App\Http\Controllers\PostController;
 |
 */
 Route::get('/',function(){
-    return view('inicio'); 
+    return view('inicio');
  })->name('inicio');
 
-Route::resource('/posts', PostController::class)->only(['index','show','create','edit']);
+Route::get('posts.nuevoPrueba', function(){
+    return view('inicio');
+})->name('nuevoPrueba');
+
+Route::resource('posts', PostController::class);
+

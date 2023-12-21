@@ -8,5 +8,10 @@
         @if (session()->has('mensaje'))
             <p>{{ session('mensaje') }}</p>
         @endif
+
+        <form action="{{route('nuevoPrueba')}}" method="">
+            @csrf
+            <button class="bg-[#0d6efd] text-white px-1.5 py-0.5 rounded my-4 block w-fit">Crear post</button>
+        </form>
     </div>
 @endsection
