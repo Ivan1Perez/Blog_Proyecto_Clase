@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaPosts extends Migration
+class NuevoCampoUsuarioPosts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CrearTablaPosts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('titulo');
-            $table->text('contenido');
-            $table->timestamps();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->integer('usuario_id');
         });
     }
 
@@ -28,6 +25,8 @@ class CrearTablaPosts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('usuario_id');
+        });
     }
 }

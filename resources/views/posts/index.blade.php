@@ -7,7 +7,7 @@
         <ul class="space-y-4">
             @forelse ($posts as $post)
                 <li class="flex gap-2 items-center">
-                    <p><b>{{ $post->titulo }}</b></p>
+                    <p><b>{{ $post->titulo }} ({{$post->usuario->login}})</b></p>
                     <a href="{{ route('posts.show', $post) }}" class="bg-[#0d6efd] text-white px-1.5 py-0.5 rounded">Ver post</a>
                     <form action="{{route('posts.destroy', $post)}}" method="post">
                         @method('DELETE')
