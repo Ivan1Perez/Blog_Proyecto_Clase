@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostPost;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Usuario;
 
 class PostController extends Controller
 {
@@ -26,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return redirect()->route('inicio')->with('mensaje', 'Aquí va un formulario');
+        //return redirect()->route('inicio')->with('mensaje', 'Aquí va un formulario para crear');
+        $usuarios = Usuario::get();
+        return view('posts.create', compact('usuarios'));
     }
 
     /**
@@ -35,9 +39,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostPost $request)
     {
-        //
+        $post = new Post();
+        $post->titulo = $request->get('titulo');
+        $post->contenido = $request->get('contenido');
+        $post->usuario_id = Usuario::inRandomOrder()->first();
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -60,7 +69,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return redirect()->route('inicio')->with('mensaje', 'Aquí va un formulario');
+        return redirect()->route('inicio')->with('mensaje', 'Aquí va un formulario para editar');
     }
 
     /**

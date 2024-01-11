@@ -19,7 +19,7 @@ class UsuarioFactory extends Factory
     {
         return [
             'login' => $this->faker->unique()->word,
-            'password' => $this->faker->unique()->word
+            'password' => $this->faker->word
         ];
     }
 }
