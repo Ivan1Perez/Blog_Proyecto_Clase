@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComentarioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 /*
@@ -20,4 +21,3 @@ Route::get('posts.nuevoPrueba', [PostController::class, 'nuevoPrueba'])->name('n
 Route::get('posts.editarPrueba/{id}', [PostController::class, 'editarPrueba'])->name('editarPrueba');
 
 Route::resource('posts', PostController::class);
-

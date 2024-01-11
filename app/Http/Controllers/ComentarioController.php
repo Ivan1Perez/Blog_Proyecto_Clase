@@ -14,11 +14,11 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
-     * Show the form for creating a new resource.
+             * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -82,4 +82,5 @@ class ComentarioController extends Controller
     {
         //
     }
+
 }

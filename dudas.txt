@@ -1,0 +1,36 @@
+- Por qué esta función:
+
+    public function index()
+    {
+        $posts = Post::with('usuario')->orderBy('titulo')
+            ->paginate(5);
+        return view('posts.index',compact('posts'));
+    }
+
+, no necesita la variable $comentarios para acceder a los mismos? Como se muestra aquí:
+
+    public function index()
+    {
+        $posts = Post::with('usuario')->orderBy('titulo')
+            ->paginate(5);
+        $comentarios = Post::with('comentarios')->get()
+            ->paginate(5);
+        return view('posts.index',compact('posts'));
+    }
+
+- El parámetro que aparece después del width (with('usuario')) hace referencia a la función:
+
+    public function usuario() {
+        return $this->belongsTo(Usuario::class);
+    }
+
+, del modelo 'Post.php'?. De ser así, por qué no es entonces necesario llamar a la función:
+
+    public function comentarios(){
+        return $this->hasMany(Comentario::class);
+    }
+
+, al igual que se hace con la de usuario?
+
+
+- Como podría hacer un 'paginate()' de comentarios para cada post?
