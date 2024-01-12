@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostPost;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Usuario;
+use App\Models\Comentario;
 
 class PostController extends Controller
 {
@@ -39,12 +40,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostPost $request)
+    public function store(PostRequest $request)
     {
         $post = new Post();
         $post->titulo = $request->get('titulo');
         $post->contenido = $request->get('contenido');
-        $post->usuario_id = Usuario::inRandomOrder()->first();
+        $post->usuario_id = Usuario::inRandomOrder()->first()->id;
         $post->save();
         return redirect()->route('posts.index');
     }
@@ -69,7 +70,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        return redirect()->route('inicio')->with('mensaje', 'Aquí va un formulario para editar');
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -79,9 +81,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->titulo = $request->get('titulo');
+        $post->contenido = $request->get('contenido');
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -92,10 +98,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        Comentario::where('post_id', $id)->delete();
         Post::findOrFail($id)->delete();
-        $posts = Post::orderBy('titulo')
-        ->paginate(5);
-        return view('posts.index', compact('posts'));
+        return redirect()->route('posts.index');
     }
 
     /**

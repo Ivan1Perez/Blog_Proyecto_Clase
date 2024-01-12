@@ -4,7 +4,7 @@
         <a class="me-2" href="{{route('inicio')}}">Inicio</a>
         <a class="me-2" href="{{route('posts.index')}}">Mostrar</a>
         <a class="me-2" href="{{route('posts.create')}}">Crear</a>
-        <a class="me-2" href="{{route('posts.edit',6)}}">Editar</a>
+        <a class="me-2 line-through" href="/">Editar</a>
         <a class="me-2" href="{{route('nuevoPrueba')}}">NuevoPrueba</a>
         <a class="me-2" href="{{route('editarPrueba', 4)}}">EditarPrueba</a>
     </div>

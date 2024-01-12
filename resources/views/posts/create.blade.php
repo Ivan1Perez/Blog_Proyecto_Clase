@@ -7,7 +7,7 @@
         @csrf
         <div class="form-group">
             <label for="titulo">Título:</label>
-            <input type="text" class="form-control" name="titulo" id="titulo" value="{{ old('titulo') }}">
+            <input type="text" class="form-control placeholder:text-slate-400" name="titulo" id="titulo" value="{{ old('titulo') }}" placeholder="Escribe un título">
             @if ($errors->has('titulo'))
                 <div class="text-danger">
                     {{ $errors->first('titulo') }}
@@ -16,9 +16,7 @@
         </div>
         <div class="form-group">
             <label for="contenido">Contenido:</label>
-            <textarea name="contenido" placeholder="Contenido..." class="placeholder:italic placeholder:text-black">
-                {{ old('contenido') }}
-            </textarea>
+            <textarea name="contenido" placeholder="Contenido..." class="placeholder:italic placeholder:text-slate-400 w-[500px] rounded border-2 p-2">{{ old('contenido') }}</textarea>
             @if ($errors->has('contenido'))
                 <div class="text-danger">
                     {{ $errors->first('contenido') }}

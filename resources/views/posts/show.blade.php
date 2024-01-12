@@ -5,7 +5,26 @@
 
     <div class="mx-4">
 
-        <h1 class="text-2xl"><u>{{ $post->titulo }}</u></h1>
+        <h1 class="text-2xl">
+            <u>{{ $post->titulo }}</u>
+            &nbsp;
+            <span class="inline-block">
+                <a href="{{ route('posts.edit', $post->id) }}" type="submit"
+                    class="bg-green-600 text-white px-1.5 py-0.5 rounded">
+                    Editar
+                </a>
+            </span>
+            &nbsp;
+            <span class="inline-block">
+                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-600 text-white px-1.5 py-0.5 rounded">
+                        Borrar
+                    </button>
+                </form>
+            </span>
+        </h1>
         <p class="my-4">{{ $post->contenido }}</p>
         <div class="flex justify-between">
             <p class="text-[#5e5e5e]"><i>Escrito por <b class="text-[#343434]">{{ $post->usuario->login }}</b></i></p>
