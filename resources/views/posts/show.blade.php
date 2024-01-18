@@ -9,19 +9,23 @@
             <u>{{ $post->titulo }}</u>
             &nbsp;
             <span class="inline-block">
-                <a href="{{ route('posts.edit', $post->id) }}" type="submit"
-                    class="bg-green-600 text-white px-1.5 py-0.5 rounded">
-                    Editar
-                </a>
+                @if (auth()->check() && auth()->user()->login === $post->usuario->login)
+                    <a href="{{ route('posts.edit', $post->id) }}" type="submit"
+                        class="bg-green-600 text-white px-1.5 py-0.5 rounded">
+                        Editar
+                    </a>
+                @endif
             </span>
             &nbsp;
             <span class="inline-block">
                 <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="bg-red-600 text-white px-1.5 py-0.5 rounded">
-                        Borrar
-                    </button>
+                    @if (auth()->check() && auth()->user()->login === $post->usuario->login)
+                        <button type="submit" class="bg-red-600 text-white px-1.5 py-0.5 rounded">
+                            Borrar
+                        </button>
+                    @endif
                 </form>
             </span>
         </h1>

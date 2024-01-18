@@ -10,6 +10,16 @@ use App\Models\Comentario;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(
+            'auth',
+            ['only' => ['create', 'store', 'edit', 'update', 'destroy']]
+        );
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +29,7 @@ class PostController extends Controller
     {
         $posts = Post::with('usuario')->orderBy('titulo')
             ->paginate(5);
-        return view('posts.index',compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -59,7 +69,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.show',compact('post'));
+        return view('posts.show', compact('post'));
     }
 
     /**

@@ -7,12 +7,13 @@
         <ul class="space-y-4">
             @forelse ($posts as $post)
                 <li class="flex gap-2 items-center">
-                    <p><b>{{ $post->titulo }} ({{$post->usuario->login}})</b></p>
-                    <a href="{{ route('posts.show', $post) }}" class="bg-[#0d6efd] text-white px-1.5 py-0.5 rounded">Ver post</a>
-                    <form action="{{route('posts.destroy', $post)}}" method="post">
+                    <p><b>{{ $post->titulo }} ({{ $post->usuario->login }})</b></p>
+                    <a href="{{ route('posts.show', $post) }}" class="bg-[#0d6efd] text-white px-1.5 py-0.5 rounded">Ver
+                        post</a>
+                    <form action="{{ route('posts.destroy', $post) }}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button class="bg-red-600 text-white px-1.5 py-0.5 rounded">Borrar</button>
+                            <button class="bg-red-600 text-white px-1.5 py-0.5 rounded">Borrar</button>
                     </form>
                 </li>
             @empty
@@ -21,7 +22,7 @@
                 </li>
             @endforelse
 
-            {{$posts->links()}}
+            {{ $posts->links() }}
         </ul>
     </div>
 @endsection
