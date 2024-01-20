@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Blog",
+    "dateExported": "2024-01-20T11:32:16.961Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "19d6c189-318c-435e-945c-16ebf02e1edb",
+            "colId": "a8962b47-e313-4b8a-a56c-31718e37234f",
+            "containerId": "",
+            "name": "Get /api/posts",
+            "url": "http://blog-clase/api/posts",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-01-20T11:02:50.564Z",
+            "modified": "2024-01-20T11:07:36.139Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "aee61a1c-24ec-4cbf-a0cd-b09e783c058c",
+            "colId": "a8962b47-e313-4b8a-a56c-31718e37234f",
+            "containerId": "",
+            "name": "Get /api/posts/id",
+            "url": "http://blog-clase/api/posts/1",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-01-20T11:08:10.512Z",
+            "modified": "2024-01-20T11:09:18.751Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "dac69fec-a663-413f-a8a6-37e167cf106a",
+            "colId": "a8962b47-e313-4b8a-a56c-31718e37234f",
+            "containerId": "",
+            "name": "POST /api/posts",
+            "url": "http://blog-clase/api/posts",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-01-20T11:13:28.361Z",
+            "modified": "2024-01-20T11:29:29.947Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\": \"Post de prueba api 11\",\n  \"contenido\": \"Contenido de prueba api 11\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6de7fac6-b125-470a-8dcc-d0286e09a274",
+            "colId": "a8962b47-e313-4b8a-a56c-31718e37234f",
+            "containerId": "",
+            "name": "PUT /api/posts/id",
+            "url": "http://blog-clase/api/posts/10",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-01-20T11:23:03.395Z",
+            "modified": "2024-01-20T11:26:01.670Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\": \"Post de prueba api\",\n  \"contenido\": \"Contenido de prueba api\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b53dabbb-3844-43f0-aacb-81d59b3d5b0f",
+            "colId": "a8962b47-e313-4b8a-a56c-31718e37234f",
+            "containerId": "",
+            "name": "DELETE /api/post/id",
+            "url": "http://blog-clase/api/posts/17",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-01-20T11:26:37.869Z",
+            "modified": "2024-01-20T11:28:57.567Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
