@@ -21,7 +21,7 @@ class UsuarioFactory extends Factory
 
         return [
             'login' => $word,
-            'password' => bcrypt($word)
+            'password' => bcrypt($word),
         ];
     }
 }
