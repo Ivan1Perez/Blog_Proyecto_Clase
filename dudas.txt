@@ -1,0 +1,15 @@
+- Como puedo hacer para que en el constructor de Api\PostController se ejecute esto correctamente:
+
+        $this->middleware(['auth', 'roles:admin'], ['only' => ['index']]);
+
+    Ya que actualemente si que me permite borrar y ejecutar el resto de funciones aunque le haya puesto el 'only'
+    al rol 'admin'.
+    (Hay que añadir a mano los roles en phpmyadmin de clase).
+
+- No entiendo esta pregunta del ejercicio 2 del pdf 'Ejercicio Autenticación I':
+    'Modifica los métodos edit , update y destroy de PostController para que redirijan
+    a posts.index si el usuario no es administrador, o si no es el propietario del post a
+    editar o borrar.'
+
+    Si el usuario no es administrador o no es el propietario del post a editar o borrar directamente no
+    puede acceder a las vistas de editar ni ver los botones de borrar. Por tanto, no entiendo la pregunta.

@@ -18,15 +18,15 @@
             </span>
             &nbsp;
             <span class="inline-block">
-                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    @if (auth()->check() && auth()->user()->login === $post->usuario->login)
+                @if (auth()->check() && auth()->user()->login === $post->usuario->login)
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="bg-red-600 text-white px-1.5 py-0.5 rounded">
                             Borrar
                         </button>
-                    @endif
-                </form>
+                    </form>
+                @endif
             </span>
         </h1>
         <p class="my-4">{{ $post->contenido }}</p>

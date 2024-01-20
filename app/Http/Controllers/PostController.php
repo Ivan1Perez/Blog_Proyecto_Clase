@@ -93,10 +93,16 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-        $post = Post::findOrFail($id);
-        $post->titulo = $request->get('titulo');
-        $post->contenido = $request->get('contenido');
-        $post->save();
+        if (auth()->user()->rol === 'admin') {
+            $post = Post::findOrFail($id);
+            $post->delete();
+            $post->titulo = $request->get('titulo');
+            $post->contenido = $request->get('contenido');
+            $post->save();
+        } else {
+            return redirect()->route('posts.index')->with('error', 'No tienes permisos para realizar esta acción.');
+        }
+
         return redirect()->route('posts.index');
     }
 
