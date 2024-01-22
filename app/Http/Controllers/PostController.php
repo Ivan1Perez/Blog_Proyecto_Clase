@@ -81,7 +81,11 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
+        if (auth()->user()->login === $post->usuario->login || auth()->user()->rol === 'admin') {
+            return view('posts.edit', compact('post'));
+        } else {
+            return redirect()->route('posts.index');
+        }
     }
 
     /**
@@ -114,8 +118,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Comentario::where('post_id', $id)->delete();
-        Post::findOrFail($id)->delete();
+        $post = Post::findOrFail($id);
+        if (auth()->user()->login === $post->usuario->login || auth()->user()->rol === 'admin') {
+            Comentario::where('post_id', $id)->delete();
+            $post->delete();
+        }
         return redirect()->route('posts.index');
     }
 

@@ -11,11 +11,11 @@ use App\Http\Requests\PostRequest;
 class PostController extends Controller
 {
 
-    public function __construct()
+    /* public function __construct()
     {
         //  $this->middleware(['auth', 'roles:admin'], ['only' => ['index']]);
         $this->middleware(['auth', 'roles:admin'], ['only' => ['index']]);
-    }
+    } */
 
     /**
      * Display a listing of the resource.
