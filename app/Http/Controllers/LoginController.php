@@ -17,7 +17,9 @@ class LoginController extends Controller
         $credenciales = $request->only('login', 'password');
         if (Auth::attempt($credenciales)) {
             // Autenticación exitosa
-            return redirect()->intended(route('posts.index'));
+            // return redirect()->intended(route('posts.index'));
+            session()->put('mensaje', $request->login);
+            return redirect()->intended(route('inicio'));
         } else {
             $error = 'Usuario incorrecto';
             return view('auth.login', compact('error'));
